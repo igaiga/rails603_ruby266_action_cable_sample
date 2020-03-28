@@ -1,6 +1,15 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # bundle exec puma cable/config.ru -p 3009 でaction cable専用サーバを起動する
+  # Action Cable 用パス /cable のマウントを解除
+  # config.action_cable.mount_path = nil
+  # クライアント(JS)用のAction Cable接続先設定
+  # action_cable_meta_tag をhtml headerに付与する必要あり。
+  # URIスキーマwsはwebscoket, wssはそのTLS利用セキュア版。
+  # config.action_cable.url = "ws://localhost:3009"
+  # config.action_cable.url = "wss://example.com/cable"
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.

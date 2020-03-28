@@ -39,9 +39,16 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Mount Action Cable outside main process or domain.
+  # bundle exec puma cable/config.ru -p 3009 でaction cable専用サーバを起動する
+  # Action Cable 用パス /cable のマウントを解除
   # config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://example.com/cable'
+  # クライアント(JS)用のAction Cable接続先設定
+  # action_cable_meta_tag をhtml headerに付与する必要あり。
+  # URIスキーマwsはwebscoket, wssはそのTLS利用セキュア版。
+  # config.action_cable.url = "ws://localhost:3009"
+  # config.action_cable.url = "wss://example.com/cable"
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  # config.action_cable.allowed_request_origins = [ 'http://localhost:9999']
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
