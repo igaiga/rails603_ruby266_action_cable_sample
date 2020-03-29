@@ -1,5 +1,6 @@
 import consumer from "./consumer"
 
+// window.App = consumer.subscriptions.create("RoomChannel", { // Chrome dev tools用
 consumer.subscriptions.create("RoomChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
@@ -27,7 +28,7 @@ consumer.subscriptions.create("RoomChannel", {
   },
 
   speak: function(message) {
-    // alert("speak!!")
+    // alert(message)
     return this.perform('speak', {message: message});
   },
 });
