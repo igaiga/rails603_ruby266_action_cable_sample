@@ -4,7 +4,7 @@ class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCase
   test "connection accepts" do
     user = User.first
     cookies.signed[:user_id] = user.id
-    connect
+    connect # connectメソッドでコネクションのオープンをシミュレート
     # p "yay!!!"
     # p "********#{ connection.class }"
     assert_equal connection.current_user.id, user.id
