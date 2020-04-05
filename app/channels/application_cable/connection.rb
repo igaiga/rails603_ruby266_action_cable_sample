@@ -2,13 +2,22 @@ module ApplicationCable
   class Connection < ActionCable::Connection::Base
     # # action_cable/connection/identification.rb#identified_by
     # # 引数で渡されたシンボルをattr_accessorする
+    # # 作られたメソッド群はチャネルから呼び出せるようにデリゲートされている
+    # # チャネルで呼ぶと、接続しているコネクション（とあるユーザーの接続）のcurrent_userを呼び出せる
+    # # https://api.rubyonrails.org/classes/ActionCable/Connection/Base.html
     # identified_by :current_user
 
+    # とあるユーザーが接続したときに呼ばれる
     # def connect
     #   # p "*********connect!!!"
     #   # p "********** #{self.method(:current_user).source_location}"
     #   # identified_byで定義されたattr_accessordの代入メソッド
     #   self.current_user = find_verified_user
+    # end
+
+    # とあるユーザーが切断したときに呼ばれる
+    # def disconnect
+    #   # Any cleanup work needed when the cable connection is cut.
     # end
 
     # private
