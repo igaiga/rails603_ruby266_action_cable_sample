@@ -9,7 +9,7 @@ consumer.subscriptions.create("RoomChannel", {
     document.
       querySelector('input[data-behavior="room_speaker"]').
       addEventListener('keypress', (event) => {
-        if (event.keyCode === 13) { // リターンキー
+        if (event.key === 'Enter') {
           this.speak(event.target.value);
           event.target.value = '';
           return event.preventDefault();
